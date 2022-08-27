@@ -13,7 +13,7 @@ services:
       - core 
     env_file:
       - .env
-    command: ["api"]
+    command: ["server start"]
     ports:
       - "8000:8000"
   monitor:
