@@ -1,0 +1,26 @@
+version: '3.4'
+services:
+  core:
+    image: dolphin-local
+    env_file:
+      - .env 
+    build:
+      context: https://github.com/Hale-Terminal/dolphin.git#main
+  api:
+    restart: always
+    image: dolphin-local
+    depends_on:
+      - core 
+    env_file:
+      - .env
+    command: ["api"]
+    ports:
+      - "8000:8000"
+  monitor:
+    restart: always
+    image: dolphin-local
+    depends_on:
+      - core
+    env_file:
+      - .env
+    command: ["monitor"]
